@@ -4,8 +4,8 @@ function Event ({dispatch, event}) {
 // イベント１件削除
     const id = event.id
 
-    // バッククォート(``)で囲んで、イベントidを参照する
     function handleClickDeleteButton() {
+        // バッククォート(``)で囲んで、イベントidを参照する
         const result = window.confirm(`イベント(id=${id})を本当に削除しても良いですか？`)
         if (result) dispatch({type: 'DELETE_EVENT', id})
     }
