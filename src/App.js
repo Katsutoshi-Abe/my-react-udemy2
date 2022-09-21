@@ -1,9 +1,20 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 function App(props) {
   const [state, setState] = useState(props)
   const {name, price} = state
+
+  // useEffectは複数設定できる
+  useEffect(function() {  // 値がマウントされたり、変更されると発動
+    console.log('This is like componemtDidMount or componemtDidUpdate')
+  })
+  useEffect(function() {  // 値が変更されると発動
+    console.log('This is like componemtDidMount')
+  }, [])
+  useEffect(function() {  // nameが変わるたびに発動
+    console.log('This callback is for name only')
+  }, [name])
 
 
   // setState({...state, price: state.price + 1})
