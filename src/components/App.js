@@ -1,5 +1,6 @@
 import React, {useReducer, useState} from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Event from './Event'
 import reducer from '../reducers'
 
 function App() {
@@ -52,6 +53,9 @@ function App() {
             <th>ID</th><th>タイトル</th><th>ボディー</th>
           </tr>
         </thead>
+        <tbody>
+          {state.map((event, index) => (<Event dispatch={dispatch} event={event} key={index} />))}
+        </tbody>
       </table>
     </div>
   )
