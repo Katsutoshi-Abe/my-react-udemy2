@@ -1,63 +1,35 @@
 import React from 'react'
 import { useState } from 'react'
 
-const App = () => {
-  const [count, setCount] = useState(0) // jsの分割代入
-  
-  
-  // countを増やす関数
-  const increment = () => setCount(count + 1) // countに1を足した値を代入するイメージ
-  const incrementB = () => setCount(previousCount => previousCount + 1)  // 別解 countの値を１増やすイメージ
+function App(props) {
+  const [name, setName] = useState(props.name)
+  const [price, setPrice] = useState(props.price)
 
-  // countを減らす関数
-  const decrement = () => setCount(count - 1)
-  const decrementB = () => setCount(previousCount => previousCount - 1)  // 別解
-
-  // countを2倍にする関数（演習）
-  const double = () => setCount(count * 2)
-
-  // countを0に戻す関数（演習）
-  const reset = () => setCount(0)
-
-  // countが3の倍数のときのみ、3で割る関数（演習）
-  const division3 = () => {
-    if (count % 3 === 0) {
-      setCount(count / 3)
-    }
+  // リセットボタン
+  function reset() {
+    setPrice(props.price)
+    setName(props.name)
   }
-  /** 別解
-   * const division3 = () => setCount(previousCount => {
-   *    if (previousCount % 3 === 0) {
-   *      return previousCount / 3
-   *    } else {
-   *      return previousCount
-   *    }
-   *  })
-   */
 
 
   return (  // returnは１つしか返せないので、<React.Fragment>で囲んで１つにする
-    <React.Fragment>  
-      <div>count: {count}</div>
-      <div>
-        <button onClick={increment}>+1</button>
-        <button onClick={decrement}>-1</button>
-      </div>
-      <div>
-        <button onClick={incrementB}>+1</button>
-        <button onClick={decrementB}>-1</button>
-      </div>
-      <div>
-        <button onClick={double}>×2</button>
-      </div>
-      <div>
-        <button onClick={division3}>÷3</button>
-      </div>
-      <div>
-        <button onClick={reset}>Reset</button>
-      </div>
+    <React.Fragment> 
+      現在の{name}は、{price}円です。 
+
+      <button onClick={function () {setPrice(price + 1)}}>+1</button>
+      <button onClick={function () {setPrice(price - 1)}}>-1</button>
+      <button onClick={reset}>Reset</button>
+
+      <input value={name} onChange={e => setName(e.target.value)} />
     </React.Fragment>
   )
+}
+
+
+// 外部から（想定）与えられた初期値
+App.defaultProps = {
+  name:   'サンプル',
+  price:  1000
 }
 
 export default App
