@@ -6,8 +6,8 @@ const App = () => {
   
   
   // countを増やす関数
-  const increment = () => setCount(count + 1)
-  const incrementB = () => setCount(previousCount => previousCount + 1)  // 別解
+  const increment = () => setCount(count + 1) // countに1を足した値を代入するイメージ
+  const incrementB = () => setCount(previousCount => previousCount + 1)  // 別解 countの値を１増やすイメージ
 
   // countを減らす関数
   const decrement = () => setCount(count - 1)
