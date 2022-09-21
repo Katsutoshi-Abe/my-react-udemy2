@@ -2,25 +2,21 @@ import React from 'react'
 import { useState } from 'react'
 
 function App(props) {
-  const [name, setName] = useState(props.name)
-  const [price, setPrice] = useState(props.price)
-
-  // リセットボタン
-  function reset() {
-    setPrice(props.price)
-    setName(props.name)
-  }
+  const [state, setState] = useState(props)
+  const {name, price} = state
 
 
-  return (  // returnは１つしか返せないので、<React.Fragment>で囲んで１つにする
+  // setState({...state, price: state.price + 1})
+  // stateを一度展開して、変更のあったpriceのほうだけ処理を行う
+  return (
     <React.Fragment> 
       現在の{name}は、{price}円です。 
 
-      <button onClick={function () {setPrice(price + 1)}}>+1</button>
-      <button onClick={function () {setPrice(price - 1)}}>-1</button>
-      <button onClick={reset}>Reset</button>
+      <button onClick={function () {setState({...state, price: price + 1})}}>+1</button>
+      <button onClick={function () {setState({...state, price: price - 1})}}>-1</button>
+      <button onClick={function () {setState(props)}}>Reset</button>
 
-      <input value={name} onChange={e => setName(e.target.value)} />
+      <input value={name} onChange={e => setState({...state, name: e.target.value})} />
     </React.Fragment>
   )
 }
