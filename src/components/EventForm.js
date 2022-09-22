@@ -29,7 +29,7 @@ function EventForm() {
       dispatch({
         type: ADD_OPERATION_LOG,
         description: 'イベントを作成しました。',
-        operatedAt: timeCurrentIso8601
+        operatedAt: timeCurrentIso8601()
       })
   
       // 入力欄をクリア
@@ -50,7 +50,7 @@ function EventForm() {
         dispatch({
           type: ADD_OPERATION_LOG,
           description: 'すべてのイベントを削除しました。',
-          operatedAt: timeCurrentIso8601
+          operatedAt: timeCurrentIso8601()
         })
       }
     }

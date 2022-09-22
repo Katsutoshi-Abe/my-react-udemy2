@@ -6,11 +6,11 @@ import {
 function operationLogs(state = [], action) {
     switch (action.type) {
         case ADD_OPERATION_LOG:
-            const operationLOg = {
+            const operationLog = {
                 description: action.description,
                 operatedAt: action.operatedAt
             }
-            return [operationLOg, ...state]
+            return [operationLog, ...state]
 
         case DELETE_ALL_OPERATION_LOGS:
             return []
