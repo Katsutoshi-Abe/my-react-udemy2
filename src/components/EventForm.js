@@ -2,7 +2,13 @@ import React, {useContext, useState} from "react"
 
 import AppContext from "../contexts/AppContext"
 
-import {CREATE_EVENT, DELETE_ALL_EVENTS} from '../actions'
+import {
+  CREATE_EVENT, 
+  DELETE_ALL_EVENTS,
+  ADD_OPERATION_LOG,
+  DELETE_ALL_OPERATION_LOGS
+} from '../actions'
+import {timeCurrentIso8601} from '../utils'
 
 function EventForm() {
     const {state, dispatch} = useContext(AppContext)
@@ -13,11 +19,17 @@ function EventForm() {
     function addEvent(e) {
       e.preventDefault()  // 処理がない場合、白く暗転しなくなる
   
-      // イベントの内容
+      // 内容
       dispatch({
         type: CREATE_EVENT,
         title,
         body
+      })
+      // ログ
+      dispatch({
+        type: ADD_OPERATION_LOG,
+        description: 'イベントを作成しました。',
+        operatedAt: timeCurrentIso8601
       })
   
       // 入力欄をクリア
@@ -33,7 +45,14 @@ function EventForm() {
       e.preventDefault()
   
       const result = window.confirm('すべてのイベントを本当に削除しても良いですか？')
-      if (result) dispatch({type: DELETE_ALL_EVENTS})
+      if (result) {
+        dispatch({type: DELETE_ALL_EVENTS})
+        dispatch({
+          type: ADD_OPERATION_LOG,
+          description: 'すべてのイベントを削除しました。',
+          operatedAt: timeCurrentIso8601
+        })
+      }
     }
 
 
