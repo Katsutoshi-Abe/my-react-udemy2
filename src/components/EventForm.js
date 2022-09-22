@@ -1,5 +1,7 @@
 import React, {useState} from "react"
 
+import {CREATE_EVENT} from '../actions'
+
 function EventForm({state, dispatch}) { // ページ内で共有するため、App.jsから渡された{state, dispatch}を使う
 
     const [title, setTitle] = useState('')            // (初期値)
@@ -11,7 +13,7 @@ function EventForm({state, dispatch}) { // ページ内で共有するため、A
   
       // イベントの内容
       dispatch({
-        type: 'CREATE_EVENT',
+        type: CREATE_EVENT,
         title,
         body
       })

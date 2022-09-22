@@ -1,4 +1,6 @@
-import React from "react";
+import React from "react"
+
+import {DELETE_EVENT} from '../actions'
 
 function Event ({dispatch, event}) {
 // イベント１件削除
@@ -7,7 +9,7 @@ function Event ({dispatch, event}) {
     function handleClickDeleteButton() {
         // バッククォート(``)で囲んで、イベントidを参照する
         const result = window.confirm(`イベント(id=${id})を本当に削除しても良いですか？`)
-        if (result) dispatch({type: 'DELETE_EVENT', id})
+        if (result) dispatch({type: DELETE_EVENT, id})
     }
 
     return(
