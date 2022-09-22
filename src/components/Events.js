@@ -1,9 +1,12 @@
-import React from "react";
+import React, {useContext} from "react";
+import AppContext from "../contexts/AppContext";
 import Event from './Event'
 
 function Events({state, dispatch}) { // ページ内で共有するため、App.jsから渡された{state, dispatch}を使う
+    const value = useContext(AppContext)
     return(
         <>
+            <div>{value}</div>
             <h4>イベント一覧</h4>
             <table className='table table-hover'>
                 <thead>
