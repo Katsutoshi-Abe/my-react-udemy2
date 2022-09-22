@@ -7,7 +7,10 @@ import reducer from '../reducers'
 
 function App() {
 
-  const [state, dispatch] = useReducer(reducer, []) // (使用するreducer, 初期値)
+  const initialState = {
+    events: []
+  }
+  const [state, dispatch] = useReducer(reducer, initialState) // (使用するreducer, 初期値)
   
   return (
     <AppContext.Provider value={{state, dispatch}}>

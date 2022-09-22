@@ -52,7 +52,7 @@ function EventForm() {
                 </div>
 
                 <button className='btn btn-primary' onClick={addEvent} disabled={uncreatable}>イベントを作成する</button>
-                <button className='btn btn-danger' onClick={deleteAllEvents} disabled={state.length === 0}>すべてのイベントを削除する</button>
+                <button className='btn btn-danger' onClick={deleteAllEvents} disabled={state.events.length === 0}>すべてのイベントを削除する</button>
             </form>
         </React.Fragment>
     )

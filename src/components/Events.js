@@ -14,7 +14,7 @@ function Events() {
                     </tr>
                 </thead>
                 <tbody>
-                    {state.map((event, index) => (<Event event={event} key={index} />))}
+                    {state.events.map((event, index) => (<Event event={event} key={index} />))}
                 </tbody>
             </table>
         </>
