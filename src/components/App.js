@@ -10,13 +10,13 @@ function App() {
   const [state, dispatch] = useReducer(reducer, []) // (使用するreducer, 初期値)
   
   return (
-    <AppContext.Provider value={"Hello, I'm a Provider."}>
+    <AppContext.Provider value={{state, dispatch}}>
       <div className='container-fluid'>
         <EventForm state={state} dispatch={dispatch} />
         <Events state={state} dispatch={dispatch} />
       </div>
+  
     </AppContext.Provider>
-
   )
 }
 

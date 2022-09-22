@@ -1,9 +1,11 @@
-import React, {useState} from "react"
+import React, {useContext, useState} from "react"
 
-import {CREATE_EVENT} from '../actions'
+import AppContext from "../contexts/AppContext"
 
-function EventForm({state, dispatch}) { // ページ内で共有するため、App.jsから渡された{state, dispatch}を使う
+import {CREATE_EVENT, DELETE_ALL_EVENTS} from '../actions'
 
+function EventForm() {
+    const {state, dispatch} = useContext(AppContext)
     const [title, setTitle] = useState('')            // (初期値)
     const [body, setBody] = useState('')              // (初期値)
     
@@ -31,7 +33,7 @@ function EventForm({state, dispatch}) { // ページ内で共有するため、A
       e.preventDefault()
   
       const result = window.confirm('すべてのイベントを本当に削除しても良いですか？')
-      if (result) dispatch({type: 'DELETE_ALL_EVENTS'})
+      if (result) dispatch({type: DELETE_ALL_EVENTS})
     }
 
 

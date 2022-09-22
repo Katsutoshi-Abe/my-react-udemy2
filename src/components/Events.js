@@ -1,12 +1,11 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import AppContext from "../contexts/AppContext";
 import Event from './Event'
 
-function Events({state, dispatch}) { // ページ内で共有するため、App.jsから渡された{state, dispatch}を使う
-    const value = useContext(AppContext)
+function Events() {
+    const {state} = useContext(AppContext)
     return(
         <>
-            <div>{value}</div>
             <h4>イベント一覧</h4>
             <table className='table table-hover'>
                 <thead>
@@ -15,7 +14,7 @@ function Events({state, dispatch}) { // ページ内で共有するため、App.
                     </tr>
                 </thead>
                 <tbody>
-                    {state.map((event, index) => (<Event dispatch={dispatch} event={event} key={index} />))}
+                    {state.map((event, index) => (<Event event={event} key={index} />))}
                 </tbody>
             </table>
         </>
